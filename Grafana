@@ -1,36 +1,30 @@
-To install Grafana on an Ubuntu machine, you can follow these steps:
+Install Grafana
 
-1. Update Package Repository: Open a terminal or SSH into your Ubuntu machine and run the following command to update the package repository:
+Update the system packages.
+$ sudo apt update
 
-sudo apt update
+Install required system packages.
+$ sudo apt-get install -y gnupg2 curl software-properties-common
 
-2. Install Grafana: Run the following command to install Grafana:
+Add Grafana GPG key.
+$ curl https://packages.grafana.com/gpg.key | sudo apt-key add -
 
-sudo apt install -y grafana
+Install the Grafana repository.
+$ sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
 
-3. Start Grafana Service: After the installation is complete, start the Grafana service using the following command:
+Update the system packages.
+$ sudo apt update
 
-sudo systemctl start grafana-server
+Install Grafana
+$ sudo apt -y install grafana
 
-4. Enable Grafana Service: Enable the Grafana service to start automatically on system boot:
+Start Grafana service.
+$ sudo systemctl start grafana-server
 
-sudo systemctl enable grafana-server
+Enable Grafana service to start on system boot.
+$ sudo systemctl enable grafana-server
 
-5. Verify Grafana Service Status: Confirm that the Grafana service is running by executing the following command:
+Check the service status.
+$ sudo systemctl status grafana-server
 
-sudo systemctl status grafana-server
-
-This command will display the status of the Grafana service, and you should see that it is active and running.
-
-6. Access Grafana Web Interface: Open a web browser on your local machine and enter the following URL:
-
-http://<ubuntu_machine_ip>:3000
-Replace <ubuntu_machine_ip> with the IP address or hostname of your Ubuntu machine.
-
-7. Log in to Grafana: In the web browser, you will be presented with the Grafana login page. The default username and password are both set to "admin". Enter these credentials to log in.
-
-8. Configure Grafana: After logging in, you will be prompted to change the admin password. Follow the instructions to update the password.
-
-9.Set Up Data Sources and Dashboards: Once logged in, you can configure data sources (e.g., Prometheus, InfluxDB) and create dashboards to visualize your data. Grafana provides a user-friendly interface to set up and manage these components.
-
-That's it! You have successfully installed and set up Grafana on your Ubuntu machine. You can now start exploring the features and capabilities of Grafana for monitoring and visualization purposes.
+By default, Grafana is accessible on port 3000. To use Grafana on port 80, you can run a reverse proxy to forward all traffic on port 3000 to port 80. To do this, you can follow the instructions in the next step. Otherwise, use port 3000 to access the Grafana web interface.
