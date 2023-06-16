@@ -1,5 +1,7 @@
 Install Grafana
 
+Online Documentation := https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-grafana-on-ubuntu-22-04
+
 Update the system packages.
 $ sudo apt update
 
